@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <title>Proyecto</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <h1>Privada</h1>
+      <div>
+          <h2>Menu</h2>
+          <ul>
+              <li>
+                <%= link_to('Inicio', dashboard_path) %>
+              </li>
+              <li>
+                <%= link_to('Conceptos', concepts_path) %>
+                
+              </li>
+              <li>
+                <%= link_to('Cuentas', accounts_path) %>
+              </li>
+              <li>
+                <%= link_to('Familia', mi_familia_path(current_user.family_id)) %>
+              </li>
+              <li>
+                <%= link_to('Movimientos', movements_path) %>
+              </li>
+              
+          </ul>
+      </div>
+       <%= link_to('salir', destroy_user_session_path, method: :delete) if current_user%>
+       <p class="notice"><%= notice if notice %></p>
+       <p class="alert"><%= alert if alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
+

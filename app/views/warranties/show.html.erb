@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @warranty.nombre %>
+</p>
+
+<p>
+  <strong>No identificacion:</strong>
+  <%= @warranty.no_identificacion %>
+</p>
+
+<p>
+  <strong>Fecha adq:</strong>
+  <%= @warranty.fecha_adq %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @warranty.estado %>
+</p>
+
+<p>
+  <strong>Periodo dias:</strong>
+  <%= @warranty.periodo_dias %>
+</p>
+
+<p>
+  <strong>Dias restantes:</strong>
+  <%= @warranty.dias_restantes %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @warranty.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_warranty_path(@warranty) %> |
+<%= link_to 'Back', warranties_path %>

@@ -1,0 +1,24 @@
+# Prueba de comandos ruby para los scaffols 
+
+
+
+
+
+
+rails g scaffold concept nombre tipo:integer descripcion user:references 
+
+rails g scaffold warranty nombre no_identificacion fecha_adq:date estado periodo_dias:integer dias_restantes:integer user:references
+
+rails g model family saldo:decimal nombre user:references
+
+rails g scaffold goal nombre descripcion cantidad:decimal saldo:decimal family:references user:references 
+
+
+rails g scaffold movement descripcion cantidad:decimal account:references concept:references  user:references goal:references
+
+#asi se realiza migracion en rails 
+rails g migration AddDataToUser user telefono:integer tipo_usuario:integer family:references
+
+rails g migration AddDataToUser nombre 
+
+rails g migration AddDataToAccount saldo:decimal tipo_cuenta:integer tipo_familiar:boolean user:references 

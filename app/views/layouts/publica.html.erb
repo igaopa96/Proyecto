@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Proyecto</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+        <h1>Publica</h1>
+       <%= link_to('salir', destroy_user_session_path, method: :delete) if current_user%>
+       <p class="notice"><%= notice if notice %></p>
+       <p class="alert"><%= alert if alert %></p>
+    <%= yield %>
+  </body>
+</html>

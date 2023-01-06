@@ -1,0 +1,47 @@
+<%= form_with(model: goal, local: true) do |form| %>
+  <% if goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+      <ul>
+        <% goal.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.text_field :cantidad %>
+  </div>
+
+  <div class="field">
+    <%= form.label :saldo %>
+    <%= form.text_field :saldo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :family_id %>
+    <%= form.text_field :family_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

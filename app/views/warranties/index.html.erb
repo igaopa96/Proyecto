@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Warranties</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>No identificacion</th>
+      <th>Fecha adq</th>
+      <th>Estado</th>
+      <th>Periodo dias</th>
+      <th>Dias restantes</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @warranties.each do |warranty| %>
+      <tr>
+        <td><%= warranty.nombre %></td>
+        <td><%= warranty.no_identificacion %></td>
+        <td><%= warranty.fecha_adq %></td>
+        <td><%= warranty.estado %></td>
+        <td><%= warranty.periodo_dias %></td>
+        <td><%= warranty.dias_restantes %></td>
+        <td><%= warranty.user_id %></td>
+        <td><%= link_to 'Show', warranty %></td>
+        <td><%= link_to 'Edit', edit_warranty_path(warranty) %></td>
+        <td><%= link_to 'Destroy', warranty, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Warranty', new_warranty_path %>

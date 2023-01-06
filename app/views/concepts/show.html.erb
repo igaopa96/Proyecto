@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @concept.nombre %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @concept.tipo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @concept.descripcion %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @concept.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_concept_path(@concept) %> |
+<%= link_to 'Back', concepts_path %>

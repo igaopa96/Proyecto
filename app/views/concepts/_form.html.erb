@@ -1,0 +1,37 @@
+<%= form_with(model: concept, local: true) do |form| %>
+  <% if concept.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(concept.errors.count, "error") %> prohibited this concept from being saved:</h2>
+
+      <ul>
+        <% concept.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nombre %>
+    <%= form.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tipo %>
+    <%= form.number_field :tipo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :descripcion %>
+    <%= form.text_field :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
