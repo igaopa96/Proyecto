@@ -13,6 +13,8 @@ class MovementsController < ApplicationController
   # GET /movements/new
   def new
     @movement = Movement.new
+    @conceptos = Concept.conceptos_familiares(current_user.family_id) 
+
   end
 
   # GET /movements/1/edit
@@ -22,9 +24,11 @@ class MovementsController < ApplicationController
   # POST /movements or /movements.json
   def create
     @movement = Movement.new(movement_params)
+    movimiento = @movement.guardad_movimientos(current_user)
+
 
     respond_to do |format|
-      if @movement.save
+      if movimiento
         format.html { redirect_to movement_url(@movement), notice: "Movement was successfully created." }
         format.json { render :show, status: :created, location: @movement }
       else

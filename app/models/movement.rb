@@ -1,6 +1,16 @@
 class Movement < ApplicationRecord
-  belongs_to :account
-  belongs_to :concept
-  belongs_to :user
-  belongs_to :goal
+
+  def guardad_movimientos(usuario)
+      self.user_id = usuario.id
+      if self.save
+          self
+      else
+          nil
+      end
+
+      end
+
+
 end
+
+

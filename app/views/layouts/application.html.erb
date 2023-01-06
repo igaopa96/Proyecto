@@ -20,16 +20,18 @@
               </li>
               <li>
                 <%= link_to('Conceptos', concepts_path) %>
-                
               </li>
               <li>
-                <%= link_to('Cuentas', accounts_path) %>
+                <%= link_to('Mis metas', goals_path) %>
               </li>
               <li>
-                <%= link_to('Familia', mi_familia_path(current_user.family_id)) %>
+                <%= link_to('Mis Cuentas', accounts_path) %>
               </li>
               <li>
-                <%= link_to('Movimientos', movements_path) %>
+                <%= link_to('Mi Familia', mi_familia_path(current_user.family_id)) %>
+              </li>
+              <li>
+                <%= link_to('Mis Movimientos', movements_path) %>
               </li>
               
           </ul>

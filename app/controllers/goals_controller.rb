@@ -22,9 +22,10 @@ class GoalsController < ApplicationController
   # POST /goals or /goals.json
   def create
     @goal = Goal.new(goal_params)
+    goal = @goal.guardar_metas(current_user)
 
     respond_to do |format|
-      if @goal.save
+      if goal
         format.html { redirect_to goal_url(@goal), notice: "Goal was successfully created." }
         format.json { render :show, status: :created, location: @goal }
       else

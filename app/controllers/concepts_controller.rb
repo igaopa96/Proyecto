@@ -22,9 +22,10 @@ class ConceptsController < ApplicationController
   # POST /concepts or /concepts.json
   def create
     @concept = Concept.new(concept_params)
+    concepto = @concept.guardar_concept(current_user)
 
     respond_to do |format|
-      if @concept.save
+      if concepto
         format.html { redirect_to concept_url(@concept), notice: "Concept was successfully created." }
         format.json { render :show, status: :created, location: @concept }
       else

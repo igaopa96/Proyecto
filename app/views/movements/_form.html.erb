@@ -21,20 +21,15 @@
     <%= form.text_field :cantidad %>
   </div>
 
+
   <div class="field">
     <%= form.label :account_id %>
     <%= form.text_field :account_id %>
   </div>
 
-  <div class="field">
-    <%= form.label :concept_id %>
-    <%= form.text_field :concept_id %>
-  </div>
+ 
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+    <%= form.collection_select(:concept_id, @conceptos, :id, :nombre, prompt: true) %>
 
   <div class="field">
     <%= form.label :goal_id %>
