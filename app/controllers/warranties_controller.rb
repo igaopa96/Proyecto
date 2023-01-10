@@ -22,9 +22,10 @@ class WarrantiesController < ApplicationController
   # POST /warranties or /warranties.json
   def create
     @warranty = Warranty.new(warranty_params)
+    garantia = @warranty.guardar_garantia(current_user)
 
     respond_to do |format|
-      if @warranty.save
+      if garantia
         format.html { redirect_to warranty_url(@warranty), notice: "Warranty was successfully created." }
         format.json { render :show, status: :created, location: @warranty }
       else

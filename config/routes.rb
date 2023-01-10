@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   
   get 'main', to: 'home#dashboard', as: 'dashboard' 
   get 'mi_familia/:id', to: 'familia#mi_familia', as: 'mi_familia' 
+  get 'registro_nuevo_fam' , to:'familia#registro_nuevo_fam' , as:'registro_fam' 
   
   
 end

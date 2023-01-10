@@ -12,12 +12,12 @@ attr_accessor :nombre_familia
 protected
 
   def crear_familia
-    
-    #familia = Family.create(user_id: self.id, nombre: self.nombre_familia, saldo: 0)
-    # if familia.id
-    #   self.family_id = familia.id
-    #   self.save
-    # end
+    #creamos la vaiable que contenga los datos que le estamos pidiendo al registrarce 
+    familia = Family.create(user_id: self.id, nombre: self.nombre_familia, saldo: 0)
+    if familia.id
+      self.family_id = familia.id
+      self.save
+    end
   end 
 
   def asignar_tipo

@@ -13,7 +13,7 @@
     <%= f.text_field :telefono %>
   </div>
 
-<div class="field">
+  <div class="field">
     <%= label_tag('Nombre de tu familia') %><br />
     <%= text_field_tag(:nombre_familia)%>
   </div>
@@ -22,7 +22,7 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
