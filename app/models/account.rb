@@ -10,5 +10,17 @@ class Account < ApplicationRecord
         end
         
     end
+
+    def self.cuentas_personales(user_id)
+        usuarios = User.where(id: user_id)
+        if usuarios
+            Account.where(user_id: usuarios)
+        else
+            nil
+        end
+    end
+
+   
+    
     
 end

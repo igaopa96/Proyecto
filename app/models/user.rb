@@ -5,21 +5,8 @@ class User < ApplicationRecord
 :recoverable, :rememberable, :validatable , :confirmable , :trackable
 
 before_save :asignar_tipo
-after_create :crear_familia 
-
-attr_accessor :nombre_familia
 
 protected
-
-  def crear_familia
-    #creamos la vaiable que contenga los datos que le estamos pidiendo al registrarce 
-    familia = Family.create(user_id: self.id, nombre: self.nombre_familia, saldo: 0)
-    if familia.id
-      self.family_id = familia.id
-      self.save
-    end
-  end 
-
   def asignar_tipo
     if !self.family_id
       self.tipo_usuario = 1

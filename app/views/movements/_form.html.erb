@@ -12,6 +12,16 @@
   <% end %>
 
   <div class="field">
+      <%= form.label 'Concepto'%>
+      <%= form.collection_select(:concept_id, @conceptos, :id, :nombre, prompt: true) %>
+  </div>
+
+  <div class="field">
+      <%= form.label 'Cuenta' %>
+      <%= form.collection_select(:account_id, @cuenta, :id, :nombre, prompt: true) %>
+  </div>
+
+  <div class="field">
     <%= form.label :descripcion %>
     <%= form.text_field :descripcion %>
   </div>
@@ -21,20 +31,10 @@
     <%= form.text_field :cantidad %>
   </div>
 
-
-  <div class="field">
-    <%= form.label :account_id %>
-    <%= form.text_field :account_id %>
-  </div>
-
- 
-
-    <%= form.collection_select(:concept_id, @conceptos, :id, :nombre, prompt: true) %>
-
-  <div class="field">
-    <%= form.label :goal_id %>
-    <%= form.text_field :goal_id %>
-  </div>
+   <div class="field">
+      <%= form.label 'Metas'%>
+      <%= form.collection_select(:goal_id, @goals, :id, :nombre, prompt: true) %>
+  </div><br>
 
   <div class="actions">
     <%= form.submit %>

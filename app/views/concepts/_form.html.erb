@@ -17,8 +17,11 @@
   </div>
 
   <div class="field">
-    <%= form.label :tipo %>
-    <%= form.number_field :tipo %>
+      <%= form.label :tipo %>
+    <%= form.radio_button(:tipo, 1) %>
+    <%= form.label "Ingreso" %>
+    <%= form.radio_button(:tipo, 2) %>
+    <%= form.label "Egreso" %>
   </div>
 
   <div class="field">
@@ -26,10 +29,6 @@
     <%= form.text_field :descripcion %>
   </div>
 
-  <!-- <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div> -->
 
   <div class="actions">
     <%= form.submit %>

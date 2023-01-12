@@ -2,6 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  layout 'publica'
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -10,9 +11,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    @user = User.find_by(email: sign_up_params[:email])
+
+    # Intenta guardar el usuario en la base de datos
+    if @user && @user.id
+      # El usuario se ha creado correctamente
+      # Puedes acceder al usuario a través de la variable de instancia @user
+      familia = Family.create(user_id: @user.id, nombre: params[:nombre_familia], saldo: 0)
+      if familia.id
+        @user.family_id = familia.id
+        @user.save!
+        #redirect_to dashboard_path
+      end
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -61,6 +75,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   def configure_sign_up_params
-    current_user.nombre_familia = params[:nombre_familia]
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :nombre, :telefono, :family_id, :tipo_usuario, :nombre_familia])
   end
+  
 end

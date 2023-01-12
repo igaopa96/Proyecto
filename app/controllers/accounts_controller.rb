@@ -24,6 +24,9 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     cuenta = @account.guardar_cuenta(current_user)
+    @accounts = Account.new(tipo_cuenta: 2)
+
+    
 
     respond_to do |format|
       if cuenta

@@ -10,9 +10,19 @@ class Goal < ApplicationRecord
       end
     end
 
+    def self.metas_familiares(family_id)
+      usuarios = User.where(family_id: family_id)
+      if usuarios
+        Goal.where(user_id: usuarios)
+      else
+        nil
+      end
+
+    end
+
+
 end
 
 
-#belongs_to :family
-  #belongs_to :user
+
   

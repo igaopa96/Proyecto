@@ -14,11 +14,16 @@ class MovementsController < ApplicationController
   def new
     @movement = Movement.new
     @conceptos = Concept.conceptos_familiares(current_user.family_id) 
+    @cuenta = Account.cuentas_personales(current_user.id)
+    @goals = Goal.metas_familiares(current_user.family_id)
 
   end
 
   # GET /movements/1/edit
   def edit
+    @conceptos = Concept.conceptos_familiares(current_user.family_id) 
+    @cuenta = Account.cuentas_personales(current_user.id)
+    @goals = Goal.metas_familiares(current_user.family_id)
   end
 
   # POST /movements or /movements.json

@@ -1,4 +1,5 @@
 class Movement < ApplicationRecord
+# after_save :restar_saldo
 
     def guardad_movimientos(usuario)
         self.user_id = usuario.id
@@ -8,6 +9,12 @@ class Movement < ApplicationRecord
             nil
         end
         end
+
+        # def restar_saldo
+        #     self.cantidad = cantidad
+        #     self.saldo = Account.
+        #     resta = self.saldo - self.cantidad
+        # end
 end
 
 
