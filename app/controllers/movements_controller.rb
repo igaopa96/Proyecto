@@ -1,5 +1,6 @@
 class MovementsController < ApplicationController
   before_action :set_movement, only: %i[ show edit update destroy ]
+ 
 
   # GET /movements or /movements.json
   def index
@@ -30,8 +31,7 @@ class MovementsController < ApplicationController
   def create
     @movement = Movement.new(movement_params)
     movimiento = @movement.guardad_movimientos(current_user)
-
-
+    
     respond_to do |format|
       if movimiento
         format.html { redirect_to movement_url(@movement), notice: "Movement was successfully created." }
