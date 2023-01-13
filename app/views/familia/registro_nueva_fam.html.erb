@@ -1,5 +1,24 @@
-<h2>Registro Familiar</h2>
+<h2>Registra a un Familiar</h2>
 
+
+<%= form_for(@user, url: registro_familia_path) do |f| %>
+  <%= f.label :nombre %>
+  <%= f.text_field :nombre %>
+
+  <%= f.label :telefono %>
+  <%= f.text_field :telefono %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %>
+    <br>
+  <%= f.submit "Registrar nuevo miembro de familia" %>
+<% end %>
        
        
 

@@ -1,24 +1,23 @@
 class Account < ApplicationRecord
-
     def guardar_cuenta(usuario)
-        self.user_id = usuario.id
-        if self.save
-            self
-        else
-            nil
-        end
-        
+      # Asigna el id del usuario al objeto cuenta
+      self.user_id = usuario.id
+      # Guarda el objeto cuenta y retorna el objeto si se guardó correctamente, en caso contrario retorna nil
+      if self.save
+        self
+      else
+        nil
+      end
     end
-
+  
     def self.cuentas_personales(user_id)
-        usuarios = User.where(id: user_id)
-        if usuarios
-            Account.where(user_id: usuarios)
-        else
-            nil
-        end
+      # Busca los usuarios con el id especificado
+      usuarios = User.where(id: user_id)
+      # Si se encontraron usuarios, busca las cuentas relacionadas con esos usuarios y las retorna
+      if usuarios
+        Account.where(user_id: usuarios)
+      else
+        nil
+      end
     end
-
-    
-    
-end
+  end

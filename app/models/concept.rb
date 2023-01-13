@@ -1,14 +1,15 @@
 class Concept < ApplicationRecord
 
-    def guardar_concept(usuario)
-      self.user_id = usuario.id
-      if self.save
-        self
-      else
-        nil
-      end
-      
+  def guardar_concept(usuario)
+    # Asigna el id del usuario al objeto concepto
+    self.user_id = usuario.id
+    # Guarda el objeto concepto y retorna el objeto si se guardó correctamente, en caso contrario retorna nil
+    if self.save
+      self
+    else
+      nil
     end
+  end
 
     def self.conceptos_familiares(family_id)
       #consulta para traer todos los usuarios de una familia 

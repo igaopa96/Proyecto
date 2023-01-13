@@ -17,11 +17,15 @@
   </div>
 
   <div class="field">
-      <%= form.label :tipo %>
-    <%= form.radio_button(:tipo, 1) %>
-    <%= form.label "Ingreso" %>
-    <%= form.radio_button(:tipo, 2) %>
-    <%= form.label "Egreso" %>
+    <%= form.label "Tipo Concepto" %>
+    <span class="radio-inline">
+      <%= form.radio_button(:tipo, 1) %>
+      <%= form.label "Ingreso" %>
+    </span>
+    <span class="radio-inline">
+      <%= form.radio_button(:tipo, 2) %>
+      <%= form.label "Egreso" %>
+    </span>
   </div>
 
   <div class="field">
