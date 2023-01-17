@@ -30,6 +30,18 @@
   <%= @warranty.dias_restantes %>
 </p>
 
+<div>
+<%= form_with model: @warranty, url: add_reference_path(@warranty), method: :patch, multipart: true do |form| %>
+  <!-- Crea un campo oculto para pasar el id de la garantía al controlador -->
+  <%= form.hidden_field :id %>
+  <!-- Crea un campo de tipo file para subir el archivo de referencia -->
+  <%= form.file_field :comprobante_garantia %>
+  <!-- Crea un botón para enviar el formulario -->
+  <%= form.submit "Agregar referencia" %>
+<% end %>
+</div>
+
+
 
 
 <%= link_to 'Edit', edit_warranty_path(@warranty) %> |

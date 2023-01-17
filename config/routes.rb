@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :movements
   resources :goals
-  resources :warranties
+  resources :warranties 
   resources :concepts
   resources :accounts 
   
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   root to: 'home#index'
   
   get 'main', to: 'home#dashboard', as: 'dashboard' 
-  get 'mi_familia/:id', to: 'familia#mi_familia', as: 'mi_familia' 
-  post 'registro_familia', to: 'familia#registro_nueva_fam', as: 'registro_familia'
-  post 'familia', to: 'familia#create', as: 'familia'
-  
+  get 'mi_familia', to: 'familia#mi_familia', as: 'mi_familia' 
+  get  'nuevo_familiar' , to: 'familia#nuevo_familiar', as: 'nuevo_familiar'
+  post 'registro_familia', to: 'familia#registro_nuevo_familar', as: 'registro_familia'
+  patch 'add_reference/:id', to: 'warranties#add_reference', as: 'add_reference'
 end

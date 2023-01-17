@@ -8,8 +8,20 @@ class WarrantiesController < ApplicationController
 
   # GET /warranties/1 or /warranties/1.json
   def show
+    
   end
 
+  def add_reference
+    # Buscar el registro de la garantía utilizando el id enviado en los parámetros
+    @warranty = Warranty.find(params[:id])
+    # Si el parámetro enviado contiene un archivo adjunto
+    if params[:warranty][:comprobante_garantia]
+      # Adjuntar ese archivo al objeto garantía usando el método "attach"
+      @warranty.comprobante_garantia.attach(params[:warranty][:comprobante_garantia])
+    end
+    # Redirigir al usuario a la vista de detalles de la garantía
+    redirect_to @warranty
+  end
   # GET /warranties/new
   def new
     @warranty = Warranty.new
@@ -34,6 +46,8 @@ class WarrantiesController < ApplicationController
       end
     end
   end
+
+  
 
   # PATCH/PUT /warranties/1 or /warranties/1.json
   def update
@@ -66,6 +80,6 @@ class WarrantiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def warranty_params
-      params.require(:warranty).permit(:nombre, :no_identificacion, :fecha_adq, :estado, :periodo_dias, :dias_restantes, :user_id)
+      params.require(:warranty).permit(:nombre, :no_identificacion, :fecha_adq, :estado, :periodo_dias, :dias_restantes, :user_id, :comprobante_garantia)
     end
 end

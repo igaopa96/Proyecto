@@ -1,3 +1,10 @@
-<h1>Hola familia</h1>
+<h1>Hola <%= @familia.nombre %> </h1>
 
-<%= link_to('Registrar Familiar', registro_familia_path)%>
+<!-- En esta linea se muestra en la vista el nombre de 
+la familia, la variable @familia tiene que estar 
+previamente asignada en el controlador -->
+
+<%= link_to('Registrar Familiar', nuevo_familiar_path)%>
+<!-- En esta linea se crea un enlace para 
+registrar un familiar, el cual lleva al path 
+"nuevo_familiar_path" -->
