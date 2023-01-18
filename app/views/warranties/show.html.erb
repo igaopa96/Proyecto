@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Nombre:</strong>
@@ -40,7 +39,16 @@
   <%= form.submit "Agregar referencia" %>
 <% end %>
 </div>
-
+<br><br>
+<div>
+  <% if @warranty.comprobante_garantia.attached? %>
+    <% @warranty.comprobante_garantia.each do |archivo|%>
+        <%= image_tag(archivo.variant(resize: '300x300')) %> 
+        <%= link_to "Ver comprobante de garantía original", rails_blob_path(archivo) %>
+        <%= link_to "Eliminar comprobante de garantía", destroy_images_warranty_path(archivo.signed_id, @warranty.id), method: :delete %>
+    <%end%>
+  <% end %>
+</div>s
 
 
 

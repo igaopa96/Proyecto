@@ -1,7 +1,7 @@
 class Warranty < ApplicationRecord
    # Declarar una relación uno a uno con un archivo adjunto llamado "comprobante_garantia"
   # que se manejará mediante ActiveStorage
-  has_one_attached :comprobante_garantia
+  has_many_attached :comprobante_garantia
 
   def guardar_garantia(usuario)
     # Asigna el id del usuario al objeto garantía
