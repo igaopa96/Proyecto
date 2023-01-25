@@ -22,12 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :tipo_familiar %>
-    <%= form.number_field :tipo_familiar %>
+    <%= form.label 'Tu cuenta es familiar o particular' %>
+    <%= form.select(:tipo_familiar, [['Selecciona  ', nil], ['Particular', 1], ['Familiar', 2]]) %>
   </div>
   
   <div class="field">
-  <%= form.select(:tipo_cuenta, [['Credito', 1], ['Debito', 2], ['Efectivo', 3]]) %>
+      <%= form.label 'Que tipo de cuenta es: ' %>
+  <%= form.select(:tipo_cuenta, [['Selecciona ', nil], ['Credito', 1], ['Debito', 2], ['Efectivo', 3]]) %>
   </div>
 
   <div class="field">

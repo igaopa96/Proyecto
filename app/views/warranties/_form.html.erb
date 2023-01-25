@@ -27,8 +27,15 @@
   </div>
 
   <div class="field">
-    <%= form.label :estado %>
-    <%= form.text_field :estado %>
+    <%= form.label "Estado" %>
+    <span class="radio-inline">
+      <%= form.radio_button(:estado, 'Activa') %>
+      <%= form.label "Activa" %>
+    </span>
+    <span class="radio-inline">
+      <%= form.radio_button(:estado, 'Vencida') %>
+      <%= form.label "Vencida" %>
+    </span>
   </div>
 
   <div class="field">

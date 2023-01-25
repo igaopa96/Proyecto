@@ -1,0 +1,11 @@
+<p>Hello <%= @movement.user.nombre %>!</p>
+<h1>Nuevo movimiento en tu cuenta</h1>
+<p>Se ha registrado un nuevo movimiento en tu cuenta con los siguientes detalles:</p>
+
+<p>Descripción: <%= @movement.descripcion %></p>
+<p>Cantidad: <%= @movement.cantidad %></p>
+<p>Cuenta: <%= @movement.account_id %> </p>
+<p>Concepto: <%= @movement.concept_id %> </p>
+<p>Meta: <%= @movement.goal_id %> </p>
+
+<p>Por favor, revisa tus movimientos para verificar esta transacción.</p>

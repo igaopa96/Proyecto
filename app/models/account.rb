@@ -1,4 +1,23 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id            :integer          not null, primary key
+#  nombre        :string
+#  descripcion   :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  saldo         :decimal(, )
+#  tipo_cuenta   :integer
+#  tipo_familiar :boolean
+#  user_id       :integer          not null
+#
 class Account < ApplicationRecord
+  validates :nombre, :descripcion, :saldo, :tipo_cuenta, :tipo_familiar, presence: true
+  validates :saldo, numericality: { greater_than: 0, only_integer: true }
+  belongs_to :user
+
+
     def guardar_cuenta(usuario)
       # Asigna el id del usuario al objeto cuenta
       self.user_id = usuario.id

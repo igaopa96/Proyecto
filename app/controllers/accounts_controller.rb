@@ -26,11 +26,10 @@ class AccountsController < ApplicationController
     cuenta = @account.guardar_cuenta(current_user)
     @accounts = Account.new(tipo_cuenta: 2)
 
-    
-
     respond_to do |format|
       if cuenta
-        format.html { redirect_to accounts_path, notice: "Account was successfully created." }
+        NotificationMailer.notification_account(current_user, @account).deliver_later
+        format.html { redirect_to accounts_path, notice: "Tu cuenta ah sido creada correctamente." }
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +42,7 @@ class AccountsController < ApplicationController
   def update
     respond_to do |format|
       if @account.update(account_params)
-        format.html { redirect_to account_url(@account), notice: "Account was successfully updated." }
+        format.html { redirect_to account_url(@account), notice: "La cuenta se actializo correctamente." }
         format.json { render :show, status: :ok, location: @account }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,7 +56,7 @@ class AccountsController < ApplicationController
     @account.destroy
 
     respond_to do |format|
-      format.html { redirect_to accounts_url, notice: "Account was successfully destroyed." }
+      format.html { redirect_to accounts_url, notice: "La cuenta se elimino correctamente" }
       format.json { head :no_content }
     end
   end

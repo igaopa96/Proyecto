@@ -1,4 +1,20 @@
+# == Schema Information
+#
+# Table name: concepts
+#
+#  id          :integer          not null, primary key
+#  nombre      :string
+#  tipo        :integer
+#  descripcion :string
+#  user_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 class Concept < ApplicationRecord
+  validates :nombre, :tipo, :descripcion, presence: true
+  #validates :tipo, numericality: { only_integer: true }
+  validates :tipo, inclusion: { in: [1, 2] }
+
 
   def guardar_concept(usuario)
     # Asigna el id del usuario al objeto concepto

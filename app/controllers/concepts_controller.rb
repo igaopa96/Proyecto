@@ -1,5 +1,6 @@
 class ConceptsController < ApplicationController
   before_action :set_concept, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /concepts or /concepts.json
   def index
@@ -26,7 +27,7 @@ class ConceptsController < ApplicationController
 
     respond_to do |format|
       if concepto
-        format.html { redirect_to concept_url(@concept), notice: "Concept was successfully created." }
+        format.html { redirect_to concept_url(@concept), notice: "El concepto ah sido creado correctamente." }
         format.json { render :show, status: :created, location: @concept }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class ConceptsController < ApplicationController
   def update
     respond_to do |format|
       if @concept.update(concept_params)
-        format.html { redirect_to concept_url(@concept), notice: "Concept was successfully updated." }
+        format.html { redirect_to concept_url(@concept), notice: "El concepto ah sido modificado correctamente." }
         format.json { render :show, status: :ok, location: @concept }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class ConceptsController < ApplicationController
     @concept.destroy
 
     respond_to do |format|
-      format.html { redirect_to concepts_url, notice: "Concept was successfully destroyed." }
+      format.html { redirect_to concepts_url, notice: "El concepto ah sido eliminado correctamente." }
       format.json { head :no_content }
     end
   end

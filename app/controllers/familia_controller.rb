@@ -1,4 +1,5 @@
 class FamiliaController < ApplicationController
+    before_action :authenticate_user!
   
     # Acción para mostrar los miembros de la familia del usuario actual
     def mi_familia
@@ -15,7 +16,7 @@ class FamiliaController < ApplicationController
         @user.tipo_usuario = 2
         # Guardar el nuevo usuario en la base de datos y redirigir al usuario a la vista de miembros de la familia con un mensaje de notificación
         if @user.save
-            redirect_to(mi_familia_path, notice: 'usuario nuevo creado')
+            redirect_to(mi_familia_path, notice: 'Familiar creado correctamente.')
         else
             #no se maneja errores en caso de no guardar correctamente
         end

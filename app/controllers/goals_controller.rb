@@ -1,5 +1,6 @@
 class GoalsController < ApplicationController
   before_action :set_goal, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /goals or /goals.json
   def index
@@ -26,7 +27,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if goal
-        format.html { redirect_to goal_url(@goal), notice: "Goal was successfully created." }
+        format.html { redirect_to goal_url(@goal), notice: "La meta ah sido creada correctamente." }
         format.json { render :show, status: :created, location: @goal }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +40,7 @@ class GoalsController < ApplicationController
   def update
     respond_to do |format|
       if @goal.update(goal_params)
-        format.html { redirect_to goal_url(@goal), notice: "Goal was successfully updated." }
+        format.html { redirect_to goal_url(@goal), notice: "La meta ah sido modificada correctamente." }
         format.json { render :show, status: :ok, location: @goal }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +54,7 @@ class GoalsController < ApplicationController
     @goal.destroy
 
     respond_to do |format|
-      format.html { redirect_to goals_url, notice: "Goal was successfully destroyed." }
+      format.html { redirect_to goals_url, notice: "La meta ah sido eliminada correctamente." }
       format.json { head :no_content }
     end
   end

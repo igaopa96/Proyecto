@@ -1,5 +1,6 @@
 class WarrantiesController < ApplicationController
   before_action :set_warranty, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /warranties or /warranties.json
   def index
@@ -64,7 +65,8 @@ end
 
     respond_to do |format|
       if garantia
-        format.html { redirect_to warranty_url(@warranty), notice: "Warranty was successfully created." }
+        NotificationMailer.notification_warranty(current_user, @warranty).deliver_later
+        format.html { redirect_to warranty_url(@warranty), notice: "La gaantia ah sido creada correctamente." }
         format.json { render :show, status: :created, location: @warranty }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -79,7 +81,7 @@ end
   def update
     respond_to do |format|
       if @warranty.update(warranty_params)
-        format.html { redirect_to warranty_url(@warranty), notice: "Warranty was successfully updated." }
+        format.html { redirect_to warranty_url(@warranty), notice: "La gaantia ah sido modificada correctamente." }
         format.json { render :show, status: :ok, location: @warranty }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -93,7 +95,7 @@ end
     @warranty.destroy
 
     respond_to do |format|
-      format.html { redirect_to warranties_url, notice: "Warranty was successfully destroyed." }
+      format.html { redirect_to warranties_url, notice: "La garantia ah sido eliminada correctamente. " }
       format.json { head :no_content }
     end
   end

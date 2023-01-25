@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Mis Metas</h1>
 
@@ -22,8 +21,6 @@
         <td><%= goal.descripcion %></td>
         <td><%= goal.cantidad %></td>
         <td><%= goal.saldo %></td>
-      <!-- <td><%= goal.family_id %></td>
-        <td><%= goal.user_id %></td> -->
         <td><%= link_to 'Show', goal %></td>
         <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
         <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>

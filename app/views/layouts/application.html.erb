@@ -40,8 +40,8 @@
           </ul>
       </div>
        <%= link_to('salir', destroy_user_session_path, method: :delete) if current_user%>
-       <p class="notice"><%= notice if notice %></p>
-       <p class="alert"><%= alert if alert %></p>
+       <p id="notice" class="notice"><%= notice if notice %></p>
+       <p id="alert" class="alert"><%= alert if alert %></p>
 
     <%= yield %>
   </body>
