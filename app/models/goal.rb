@@ -15,7 +15,7 @@
 class Goal < ApplicationRecord
   validates :nombre, :descripcion, :saldo, :cantidad,  presence: true
   validates :saldo, :cantidad, numericality: { greater_than: 0, only_integer: true }
-
+  belongs_to :user
 
   def guardar_metas(usuario)
     # Asigna el id del usuario y el id de la familia del usuario al objeto meta

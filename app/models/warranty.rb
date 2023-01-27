@@ -16,6 +16,7 @@
 class Warranty < ApplicationRecord
   validates :nombre, :no_identificacion, :estado, :fecha_adq, presence: true
   validates :periodo_dias, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  belongs_to :user
   
   # Declarar una relación uno a uno con un archivo adjunto llamado "comprobante_garantia"
   # que se manejará mediante ActiveStorage

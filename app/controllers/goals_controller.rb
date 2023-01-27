@@ -4,7 +4,14 @@ class GoalsController < ApplicationController
 
   # GET /goals or /goals.json
   def index
-    @goals = Goal.all
+    if current_user.nil?
+      redirect_to new_user_session_path and return
+    end
+    if current_user.tipo_usuario == 1
+      @goals = Goal.all
+    else
+      @goals = current_user.goals
+    end
   end
 
   # GET /goals/1 or /goals/1.json

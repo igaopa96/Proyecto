@@ -22,18 +22,16 @@ class WarrantiesController < ApplicationController
 end
 
 def destroy_image
-  @archivo = ActiveStorage::Blob.find_signed(params[:id])
-  id_warranty = params[:warranty]
-  @archivo.purge 
-  redirect_to warranty_path(id_warranty), notice: "Comprobante de garantía eliminado correctamente."
+  @warranty = Warranty.find(params[:warranty])
+  @warranty.comprobante_garantia.purge
+  redirect_to @warranty, notice: "Comprobante de garantía eliminado correctamente."
 end
 
 
-def add_reference
-   
+def add_reference  
   @warranty = Warranty.find(params[:id])
   if params[:warranty][:comprobante_garantia]
-    if ["image/jpeg", "image/png"].include?(params[:warranty][:comprobante_garantia].content_type)
+    if ["image/jpeg", "image/png", "application/pdf"].include?(params[:warranty][:comprobante_garantia].content_type)
       @warranty.comprobante_garantia.attach(params[:warranty][:comprobante_garantia])
       if @warranty.comprobante_garantia.attached?
         redirect_to @warranty, notice: "Comprobante de garantía subido correctamente."
@@ -41,12 +39,15 @@ def add_reference
         redirect_to @warranty, alert: "No se pudo subir el comprobante de garantía."
       end
     else
-      redirect_to @warranty, alert: "Solo se permiten archivos de tipo JPEG y PNG"
+      redirect_to @warranty, alert: "Solo se permiten archivos de tipo JPEG, PNG y PDF"
     end
   else
     redirect_to @warranty, alert: "No se ha seleccionado ningún archivo para subir."
   end
 end
+
+
+
 
 
   # GET /warranties/new

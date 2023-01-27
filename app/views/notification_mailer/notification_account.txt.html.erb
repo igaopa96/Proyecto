@@ -1,0 +1,27 @@
+Hello <%= @account.user.nombre %>!
+Nueva cuenta dada de alta 
+Se ha registrado una nueva cuenta con tu usuario con la siguiente informacion : 
+
+Nombre : <%= @account.nombre %></p>
+No Identificacion : <%= @account.descripcion %>
+Con un saldo inicial : <%= @account.saldo %> 
+Tipo de cuenta : 
+  <% if @account.tipo_cuenta == 1 %>
+    Crédito
+  <% elsif @account.tipo_cuenta == 2 %>
+    Débito
+  <% elsif @account.tipo_cuenta == 3 %>
+    Efectivo
+  <% end %>
+
+Tipo de uso : 
+  <% if @account.tipo_familiar %>
+    familiar
+  <% else %>
+    particular
+  <% end %>
+
+
+
+Creada el dia : <%= @account.created_at%> 
+Por favor, revisa tus cuentas para verificar la informacion .

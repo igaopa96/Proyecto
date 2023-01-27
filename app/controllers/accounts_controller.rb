@@ -4,7 +4,15 @@ class AccountsController < ApplicationController
 
   # GET /accounts or /accounts.json
   def index
-    @accounts = Account.all
+    if current_user.nil?
+      redirect_to new_user_session_path and return
+    end
+    if current_user.tipo_usuario == 1
+      @accounts = Account.all
+    else
+      @accounts = current_user.accounts.where(tipo_familiar: true)
+      @accounts += current_user.accounts.where(tipo_familiar: false)
+    end
   end
 
   # GET /accounts/1 or /accounts/1.json
@@ -24,7 +32,6 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     cuenta = @account.guardar_cuenta(current_user)
-    @accounts = Account.new(tipo_cuenta: 2)
 
     respond_to do |format|
       if cuenta

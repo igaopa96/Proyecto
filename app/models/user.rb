@@ -28,16 +28,15 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-:recoverable, :rememberable, :validatable , :confirmable , :trackable
-before_save :asignar_tipo
+  :recoverable, :rememberable, :validatable , :confirmable , :trackable
+  belongs_to :family, optional: true
+  scope :admin, -> { where(tipo_usuario: 1) }
+  scope :non_admin, -> { where(tipo_usuario: 2) }
+  has_many :accounts
+  has_many :concepts
+  has_many :movements
+  has_many :goals
 
-protected
-  def asignar_tipo
-    if !self.family_id
-      self.tipo_usuario = 1
-    end
-    
-
-  end
+  
 
 end

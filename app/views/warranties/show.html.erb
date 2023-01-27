@@ -30,7 +30,7 @@
 </p>
 
 <div>
-<%= form_with model: @warranty, url: add_reference_path(@warranty), method: :patch, multipart: true do |form| %>
+<%= form_with model: @warranty, url: add_reference_path(@warranty), method: :post, multipart: true do |form| %>
   <!-- Crea un campo oculto para pasar el id de la garantía al controlador -->
   <%= form.hidden_field :id %>
   <!-- Crea un campo de tipo file para subir el archivo de referencia -->
@@ -43,12 +43,19 @@
 <div>
   <% if @warranty.comprobante_garantia.attached? %>
     <% @warranty.comprobante_garantia.each do |archivo|%>
-        <%= image_tag(archivo.variant(resize: '300x300')) %> 
+        <% if archivo.content_type.include?("image") %>
+          <%= image_tag(archivo.variant(resize: '300x300')) %>
+        <% elsif archivo.content_type.include?("pdf") %>
+          <%= image_tag("pdf_logo.png") %> <%= archivo.filename %>
+          <%= link_to archivo, target: "_blank" do %>
+               Ver PDF
+        <% end %>
+        <% end %> 
         <%= link_to "Ver comprobante de garantía original", rails_blob_path(archivo) %>
         <%= link_to "Eliminar comprobante de garantía", destroy_images_warranty_path(archivo.signed_id, @warranty.id), method: :delete %>
     <%end%>
   <% end %>
-</div>s
+</div>
 
 
 

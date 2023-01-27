@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'mi_familia', to: 'familia#mi_familia', as: 'mi_familia' 
   get  'nuevo_familiar' , to: 'familia#nuevo_familiar', as: 'nuevo_familiar'
   post 'registro_familia', to: 'familia#registro_nuevo_familar', as: 'registro_familia'
-  patch 'add_reference/:id', to: 'warranties#add_reference', as: 'add_reference'
+  post 'add_reference/:id', to: 'warranties#add_reference', as: 'add_reference'
   get 'warranties/:id/image', to: 'warranties#show_image', as: 'show_image'
   delete 'warranties/:id/:warranty', to: 'warranties#destroy_image', as: 'destroy_images_warranty'
 end

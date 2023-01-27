@@ -14,6 +14,7 @@ class Concept < ApplicationRecord
   validates :nombre, :tipo, :descripcion, presence: true
   #validates :tipo, numericality: { only_integer: true }
   validates :tipo, inclusion: { in: [1, 2] }
+  belongs_to :user
 
 
   def guardar_concept(usuario)

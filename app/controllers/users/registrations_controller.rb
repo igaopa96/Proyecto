@@ -14,7 +14,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @user = User.find_by(email: sign_up_params[:email])
-
     # Intenta guardar el usuario en la base de datos
     if @user && @user.id
       # El usuario se ha creado correctamente
@@ -22,6 +21,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       familia = Family.create(user_id: @user.id, nombre: params[:nombre_familia], saldo: 0)
       if familia.id
         @user.family_id = familia.id
+        @user.tipo_usuario = 1
         @user.save!
         #redirect_to dashboard_path
       end

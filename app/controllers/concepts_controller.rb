@@ -4,9 +4,16 @@ class ConceptsController < ApplicationController
 
   # GET /concepts or /concepts.json
   def index
-    @concepts = Concept.all
+    if current_user.nil?
+      redirect_to new_user_session_path and return
+    end
+    if current_user.tipo_usuario == 1
+      @concepts = Concept.all
+    else
+      @concepts = current_user.concepts
+    end
   end
-
+  
   # GET /concepts/1 or /concepts/1.json
   def show
   end

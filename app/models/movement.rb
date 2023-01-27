@@ -16,7 +16,6 @@ class Movement < ApplicationRecord
 belongs_to :user
 
 
-
   def guardad_movimientos(usuario)
       self.user_id = usuario.id
       concepto = Concept.find(self.concept_id)

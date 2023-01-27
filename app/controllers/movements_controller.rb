@@ -5,7 +5,14 @@ class MovementsController < ApplicationController
 
   # GET /movements or /movements.json
   def index
-    @movements = Movement.all
+    if current_user.nil?
+      redirect_to new_user_session_path and return
+    end
+    if current_user.tipo_usuario == 1
+      @movements = Movement.all
+    else
+      @movements = current_user.movements
+    end
   end
 
   # GET /movements/1 or /movements/1.json

@@ -16,6 +16,7 @@ class Account < ApplicationRecord
   validates :nombre, :descripcion, :saldo, :tipo_cuenta, :tipo_familiar, presence: true
   validates :saldo, numericality: { greater_than: 0, only_integer: true }
   belongs_to :user
+  
 
 
     def guardar_cuenta(usuario)
